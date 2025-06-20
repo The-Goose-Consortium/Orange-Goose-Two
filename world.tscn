@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dc4t0wn3aovjb"]
+[gd_scene load_steps=13 format=3 uid="uid://dc4t0wn3aovjb"]
 
 [ext_resource type="Texture2D" uid="uid://cpkwk2vlulfvs" path="res://assets/SkyHDR.hdr" id="1_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://bn8wfhbs1omgo" path="res://assets/Dark/texture_08.png" id="2_036b0"]
 [ext_resource type="PackedScene" uid="uid://boxlpqxjfyj4a" path="res://player.tscn" id="2_tlwt5"]
 [ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assets/Orange/texture_09.png" id="4_dwbse"]
 [ext_resource type="Texture2D" uid="uid://cm5m7nr7dugjd" path="res://assets/Purple/texture_09.png" id="5_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://dmei6j3nc3ncd" path="res://assets/goose.fbx" id="6_dwbse"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_036b0"]
 panorama = ExtResource("1_tlwt5")
@@ -57,3 +58,43 @@ material = SubResource("StandardMaterial3D_gbfbk")
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -7.74309, 1, 7.14995)
 size = Vector3(3, 3, 4)
 material = SubResource("StandardMaterial3D_ioo17")
+
+[node name="goose" parent="." instance=ExtResource("6_dwbse")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.268478, 1.99497, -5.3716)
+
+[node name="body" parent="goose/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.984808, -0.173648, -5.96046e-08, 0.173648, 0.984808, 0, 0, -5.96046e-08, 1, 0.00241075, 0.00241075, 0.00241075)
+bone_idx = 1
+
+[node name="beak" parent="goose/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.984808, -0.173648, -5.96046e-08, 0.173648, 0.984808, 0, -8.88178e-16, -5.96046e-08, 1, 0.00241075, 0.00241075, 0.00241075)
+bone_idx = 2
+
+[node name="eyes" parent="goose/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.984808, -0.173648, -5.96046e-08, 0.173648, 0.984808, 0, -8.88178e-16, -5.96046e-08, 1, 0.00241075, 0.00241075, 0.00241075)
+bone_idx = 3
+
+[node name="pupils" parent="goose/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.984808, -0.173648, -5.96046e-08, 0.173648, 0.984808, 0, -1.77636e-15, -5.96046e-08, 1, 0.00241075, 0.00241075, 0.00241075)
+bone_idx = 4
+
+[node name="wings_001" parent="goose/Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.944397, -0.224492, 0.240243, 0.205192, 0.9733, 0.102877, -0.256924, -0.0478605, 0.965246, 0.00119352, -0.00575993, 0.00311136)
+bone_idx = 6
+
+[node name="wings" parent="goose/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.946342, -0.305313, -0.105927, 0.253408, 0.904484, -0.343064, 0.200551, 0.297813, 0.93332, 0.00397176, -0.000320601, 0.000812207)
+bone_idx = 9
+
+[node name="legs_001" parent="goose/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, -2.34218e-07, -1.86265e-09, 1.38767e-07, 0.597598, -0.801796, 2.12342e-07, 0.801796, 0.597598, 0, 0.0100636, 0.00156091)
+bone_idx = 12
+
+[node name="legs" parent="goose/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, -1.22763e-07, 4.20958e-07, -2.61702e-07, 0.471083, 0.882089, -2.78465e-07, -0.882089, 0.471083, 1.39698e-09, -0.00754528, -0.00105957)
+bone_idx = 15
+
+[node name="AnimationPlayer" parent="goose" index="1"]
+autoplay = "Armature|run_2"
+
+[editable path="goose"]

@@ -1,21 +1,70 @@
 [gd_scene load_steps=4 format=3 uid="uid://boxlpqxjfyj4a"]
 
 [ext_resource type="Script" uid="uid://b763tvahf81yb" path="res://player.gd" id="1_4flbx"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+[ext_resource type="PackedScene" uid="uid://dmei6j3nc3ncd" path="res://assets/goose.fbx" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4flbx"]
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_4flbx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_sh265")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CapsuleShape3D_4flbx")
 
 [node name="CamPivot" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 2, 7)
+
+[node name="Mesh" parent="." instance=ExtResource("2_onrkg")]
+transform = Transform3D(0.329751, 0, 0, 0, 0.329751, 0, 0, 0, 0.329751, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Mesh/Armature" index="0"]
+bones/0/position = Vector3(0.000250594, 0.000250594, -0.00199427)
+bones/0/rotation = Quaternion(0.512067, 0.486998, 0.537746, 0.459836)
+bones/5/position = Vector3(-0.00434142, 0.00416321, -0.00361234)
+bones/5/rotation = Quaternion(-0.788076, -0.169109, 0.0331051, 0.590967)
+bones/8/position = Vector3(-0.00770778, 0.00694126, 0.00467518)
+bones/8/rotation = Quaternion(-0.00457907, 0.628462, 0.776815, 0.039657)
+bones/11/position = Vector3(-0.00400343, 0.00314244, 0.00369339)
+bones/11/rotation = Quaternion(-0.194691, -0.67624, 0.206638, 0.679776)
+bones/14/position = Vector3(0.00400343, -0.00655327, -0.0035381)
+bones/14/rotation = Quaternion(0.543095, -0.443183, 0.550989, -0.452822)
+
+[node name="body" parent="Mesh/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.998603, -0.0526764, 0.0042007, 0.0528291, 0.993302, -0.102767, 0.00124085, 0.102845, 0.994696, 0.000250594, 0.000250594, -0.00199427)
+bone_idx = 1
+
+[node name="beak" parent="Mesh/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.998603, -0.0526765, 0.0042007, 0.0528291, 0.993302, -0.102767, 0.00124085, 0.102845, 0.994696, 0.000250594, 0.000250594, -0.00199427)
+bone_idx = 2
+
+[node name="eyes" parent="Mesh/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.998603, -0.0526765, 0.0042007, 0.0528291, 0.993302, -0.102767, 0.00124085, 0.102845, 0.994696, 0.000250594, 0.000250594, -0.00199427)
+bone_idx = 3
+
+[node name="pupils" parent="Mesh/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.998603, -0.0526765, 0.0042007, 0.0528291, 0.993302, -0.102767, 0.00124085, 0.102845, 0.994696, 0.000250594, 0.000250594, -0.00199427)
+bone_idx = 4
+
+[node name="wings_001" parent="Mesh/Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.978305, 0.0992267, 0.181857, -0.0156406, 0.910702, -0.412768, -0.206575, 0.400969, 0.892497, -0.00063116, -0.00247963, -0.00391622)
+bone_idx = 6
+
+[node name="wings" parent="Mesh/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.966976, 0.00413697, -0.254832, -0.0159804, 0.998885, -0.0444226, 0.254364, 0.047028, 0.965964, 0.00331418, -0.00757233, -0.0020601)
+bone_idx = 9
+
+[node name="legs_001" parent="Mesh/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, -1.15009e-07, -5.96046e-08, 4.00469e-08, 0.54425, -0.838923, 1.67638e-07, 0.838923, 0.54425, 0, 0.000114232, 0.00565794)
+bone_idx = 12
+
+[node name="legs" parent="Mesh/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 5.60507e-08, 3.31551e-07, -4.42378e-08, 0.98038, 0.197113, -2.57045e-07, -0.197113, 0.980381, 9.31323e-10, -0.00584177, 7.31321e-07)
+bone_idx = 15
+
+[node name="AnimationPlayer" parent="Mesh" index="1"]
+autoplay = "Armature|run_2"
+
+[editable path="Mesh"]
