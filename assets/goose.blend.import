@@ -4,12 +4,11 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://3peodfu6fd8m"
-path="res://.godot/imported/goose.blend-e173065b4131639e1369bbb46254541b.scn"
+valid=false
 
 [deps]
 
 source_file="res://assets/goose.blend"
-dest_files=["res://.godot/imported/goose.blend-e173065b4131639e1369bbb46254541b.scn"]
 
 [params]
 
